@@ -55,7 +55,7 @@ function saveStorage() {
     localStorage.setItem('lista', listaJSON);
     }
 
-    
+    //monta os itens na tabela
 function listaTabela(){
 
     let tabela = document.getElementById('tabela-li');
@@ -76,28 +76,45 @@ function listaTabela(){
         tabela_produto.innerText = lista[i].name;
         tabela_quantidade.innerText = lista[i].quantidade;
         tabela_valor.innerText = lista[i].valor;
-        tabela_acao = lista[i].acao;    
-        //tabela_id.classList.add('center');
-        //tabela_acao.classList.add('center');
 
-    }
-}
+        //cria o elemento deletar clicando em uma imagem definida
+        let imgDelete = document.createElement('img');
+        imgDelete.src="/img/imagem-delete2.png";
+        tabela_acao.classList.add('center');
+        tabela_acao.appendChild(imgDelete);
 
-function deletar(id) {
-        
-    if(confirm('Deseja realmente deletar o id: ' + id)){
+        imgDelete.addEventListener("onclick", function deletarProduto(id){
 
-    let tabela = document.getElementById('tabela');
+            let tabela = document.getElementById('tabela-li');
 
-    for(let i = 0; i < lista.length; i++){
+            for(let i = 0; i < lista.length; i++){
 
-        if(lista[i].id == id){
-            lista.splice(i, 1);
-            tabela.deleteRow(i);
-            }
+            if(lista[i].id == id){
+                //lista.splice(i, 1);
+                tabela.deleteRow(i);
+                }
         }
+    
+    });
+        
     }
 }
+
+// function deletarProduto(id) {
+        
+//     if(confirm('Deseja realmente deletar o id: ' + id)){
+
+//     let tabela = document.getElementById('tabela');
+
+//     for(let i = 0; i < lista.length; i++){
+
+//         if(lista[i].id == id){
+//             lista.splice(i, 1);
+//             tabela.deleteRow(i);
+//             }
+//         }
+//     }
+// }
 
 
 function deletaLista(){
