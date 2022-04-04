@@ -54,9 +54,17 @@ function saveStorage() {
     localStorage.setItem('lista', listaJSON);
     }
 
-  // adiciona evento de click no botao de adicionar
-  btnAddProd.addEventListener('click', addItem);
+ 
+function deletaLista(){
+    localStorage.clear();
+}
+
+
+// adiciona evento de click no botao de adicionar
+btnAddProd.addEventListener('click', addItem);
   
-  
+btnDeletarLista.addEventListener('click', deletaLista)
 
   console.log(lista)
+
+  
