@@ -23,18 +23,28 @@
     </div>
     <h1>Cabeçalho 1</h1>
     <p>Sobre a lista de produtos</p>
-    <h3>lista de produtos</h3>
+   
 
     <div id="input-produto">
-        <input id="nome-produto" type="text" placeholder="Nome do produto">
+        <label for="nome-produto">Lista de produtos</label>
+        <br>
+        <input id="nome-produto" name="nome-produto" type="text" placeholder="Nome do produto">
         <input id="qtd-produto" type="number" placeholder="Quantidade">
         <button id="btn-adiciona">Adicionar</button>
     </div>
 
     <div id="cont-lista">
-        <ul id="lista-produtos">
-            <li></li>
-        </ul>
+        <table border="3">
+            <thead>
+                <th class="center">Check</th>
+                <th>Produto</th>
+                <th>Valor</th>
+                <th class="center">Ação</th>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
     </div>
 
     <div id="botoes">
@@ -43,7 +53,9 @@
     </div>
 </div>
 <div id="janela-input">
-    <input id="valor-produtos" type="number" placeholder="Valor">
+    <label for="valor-produtos">Valor unitário</label>
+    <br>
+    <input id="valor-produtos" type="number" placeholder="R$">
     <button id="btn-valor">Inserir</button>
 </div>
 
