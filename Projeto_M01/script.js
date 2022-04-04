@@ -9,8 +9,8 @@ let valorProdutos = document.getElementById('valor-produtos');
 //buttons
 const btnAddProd = document.getElementById('btn-adiciona');
 const btnAdcValor = document.getElementById('btn-valor');
-const btnDeletarLista = document.getElementById('deletar-itens');
-const btnDeletarItens = document.getElementById('deletar-lista');
+const btnDeletarLista = document.getElementById('deletar-lista');
+const btnDeletarItens = document.getElementById('deletar-itens');
 
 // Array dos produtos
 var lista = [];
@@ -29,9 +29,10 @@ function addItem() {
       nomeProduto.value = '';
       qtdProduto.value = '';
       valorProdutos = '';
-      // atualiza a tela e salva no storage
-     // updateScreen();
+      // salva no storage
       saveStorage();
+      // chama função tabela
+      listaTabela();
     } else {
       // aviso para campo vazio
       alert('Insira o nome de um item!');
@@ -54,7 +55,51 @@ function saveStorage() {
     localStorage.setItem('lista', listaJSON);
     }
 
- 
+    
+function listaTabela(){
+
+    let tabela = document.getElementById('tabela-li');
+
+    tabela.innerText = '';
+
+    for(let i = 0; i < lista.length; i++) {
+
+        let cell = tabela.insertRow();
+
+        let tabela_id = cell.insertCell();
+        let tabela_produto = cell.insertCell();
+        let tabela_quantidade = cell.insertCell();
+        let tabela_valor = cell.insertCell();
+        let tabela_acao = cell.insertCell();
+
+        tabela_id.innerText = lista[i].id;  // colocar o checkbox aqui
+        tabela_produto.innerText = lista[i].name;
+        tabela_quantidade.innerText = lista[i].quantidade;
+        tabela_valor.innerText = lista[i].valor;
+        tabela_acao = lista[i].acao;    
+        //tabela_id.classList.add('center');
+        //tabela_acao.classList.add('center');
+
+    }
+}
+
+function deletar(id) {
+        
+    if(confirm('Deseja realmente deletar o id: ' + id)){
+
+    let tabela = document.getElementById('tabela');
+
+    for(let i = 0; i < lista.length; i++){
+
+        if(lista[i].id == id){
+            lista.splice(i, 1);
+            tabela.deleteRow(i);
+            }
+        }
+    }
+}
+
+
 function deletaLista(){
     localStorage.clear();
 }
@@ -65,6 +110,4 @@ btnAddProd.addEventListener('click', addItem);
   
 btnDeletarLista.addEventListener('click', deletaLista)
 
-  console.log(lista)
-
-  
+console.log(lista)
