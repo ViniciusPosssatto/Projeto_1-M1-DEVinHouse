@@ -19,13 +19,13 @@ var lista = [];
 function addItem() {
     // testa se existe algo escrito no campo  
     if (nomeProduto.value) {
-      lista.push({            //insere um objeto com id/nome/qtde/valor no array
+        lista.push({            //insere um objeto com id/nome/qtde/valor no array
         id: Date.now(),  
         name: nomeProduto.value,
         quantidade: qtdProduto.value,
         valor: valorProdutos.value
       });
-      // reseta o valor do campo/qtdade/valor
+      // reseta o valor do nome/qtdade/valor
       nomeProduto.value = '';
       qtdProduto.value = '';
       valorProdutos = '';
@@ -35,25 +35,42 @@ function addItem() {
       listaTabela();
     } else {
       // aviso para campo vazio
-      alert('Insira o nome de um item!');
+     // alert('Insira o nome de um item!');
     }
 }
 
 // busca lista no localStorage
 var listaJSON = localStorage.getItem('lista');
-  
-// verifica se veio algo do storage
+
+// verifica se tem algo do storage
 if (listaJSON) {
     // atualiza lista oficial e tela
     lista = JSON.parse(listaJSON);
-    //updateScreen();
+    addItem();
+    listaTabela();
   }
 // funcao de salvar no localStorage
 function saveStorage() {
     var listaJSON = JSON.stringify(lista);
     // salva a lista
     localStorage.setItem('lista', listaJSON);
-    }
+}
+
+
+//  function deletarProduto(){
+//     let novaLista = [];
+//     lista.forEach(function(lista) {
+//         if(lista.id !== id) {
+//             novaLista.push(lista);
+//         }
+//     })
+//     console.log(novaLista)
+//     lista = novaLista;
+//     //addItem();
+// }
+
+
+
 
     //monta os itens na tabela
 function listaTabela(){
@@ -66,16 +83,20 @@ function listaTabela(){
 
         let cell = tabela.insertRow();
 
-        let tabela_id = cell.insertCell();
+        let tabela_check = cell.insertCell();
         let tabela_produto = cell.insertCell();
         let tabela_quantidade = cell.insertCell();
         let tabela_valor = cell.insertCell();
         let tabela_acao = cell.insertCell();
 
-        tabela_id.innerText = lista[i].id;  // colocar o checkbox aqui
+        tabela_check.innerHtml = lista.id;
         tabela_produto.innerText = lista[i].name;
         tabela_quantidade.innerText = lista[i].quantidade;
         tabela_valor.innerText = lista[i].valor;
+
+        //cria o checkbox dentro da table
+        let checkbox = document.createElement('checkbox');
+        checkbox.addEventListener('onclick', checkbox)
 
         //cria o elemento deletar clicando em uma imagem definida
         let imgDelete = document.createElement('img');
@@ -83,22 +104,12 @@ function listaTabela(){
         tabela_acao.classList.add('center');
         tabela_acao.appendChild(imgDelete);
 
-        imgDelete.addEventListener("onclick", function deletarProduto(id){
-
-            let tabela = document.getElementById('tabela-li');
-
-            for(let i = 0; i < lista.length; i++){
-
-            if(lista[i].id == id){
-                //lista.splice(i, 1);
-                tabela.deleteRow(i);
-                }
-        }
-    
-    });
+        //addo evento de excluir o produto pelo id
+        //imgDelete.addEventListener("click", deletarProduto(lista.id));
         
     }
 }
+
 
 // function deletarProduto(id) {
         
@@ -116,7 +127,7 @@ function listaTabela(){
 //     }
 // }
 
-
+// objetivo de limpar a lista do local storage
 function deletaLista(){
     localStorage.clear();
 }
@@ -128,3 +139,11 @@ btnAddProd.addEventListener('click', addItem);
 btnDeletarLista.addEventListener('click', deletaLista)
 
 console.log(lista)
+
+
+
+// input[type="checkbox"]:checked ~ .lineThrough {
+//   color: #ccc;
+//   text-decoration: line-through;
+// }
+// coloquei a classe lineThrough no checkbox criado
