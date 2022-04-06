@@ -1,3 +1,8 @@
+body{
+    top: 0;
+    left: 0;;
+}
+
 #janela_input{
     width: 100vw;
     height: 100vh;
@@ -20,9 +25,27 @@
     min-width: 300px;
     padding: 40px;
     border: 10px solid rgb(77, 72, 72);   
-}   
-img{
-    width: 24px;
+}  
+
+
+.imgDelet{
+    width: 21px;
+}
+.img-logo{
+    width: 90px;
+}
+.navbar{
+    width: 100%;
+    height: 40px;
+    padding: 5 0 5px 5px;
+    display: flex;
+    background-color: aqua;
+    min-width: 460px;
+}
+#navbar{
+    display: flex;
+    padding: 10px 0 0 20px;
+    gap: 20px;
 }
 
 #container{
@@ -31,7 +54,7 @@ img{
     background: rgb(231, 229, 229);
     position: fixed;
     border: 3px solid black;
-    display: inline;
+    
     
 }
 
