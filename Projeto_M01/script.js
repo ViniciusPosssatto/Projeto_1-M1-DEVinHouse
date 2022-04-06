@@ -11,7 +11,7 @@ const btnAddProd = document.getElementById('btn-adiciona');
 const btnAdcValor = document.getElementById('btn-valor');
 const btnDeletarLista = document.getElementById('deletar-lista');
 const btnDeletarItens = document.getElementById('deletar-itens');
-const btnComprar = document.getElementById('btn-comprar')
+const btnComprar = document.getElementById('btn-comprar');
 
 // Array dos produtos
 var lista = [];
@@ -19,12 +19,12 @@ var lista = [];
 // funcao de adicionar item
 function addItem() {
     // testa se existe algo escrito no campo  
-    if (nomeProduto.value && qtdProduto.value && valorProdutos.value) {
+    if (nomeProduto.value_) {
         lista.push({            //insere um objeto com id/nome/qtde/valor no array
         id: Date.now(),  
         name: nomeProduto.value,
         quantidade: qtdProduto.value,
-        valor: valorProdutos.value
+        valor: valorProdutos.value,
       });
       // reseta o valor do nome/qtdade/valor
       nomeProduto.value = '';
@@ -43,6 +43,7 @@ function addItem() {
     // }
     }
 }
+
 // busca lista no localStorage
 var listaJSON = localStorage.getItem('lista');
 
@@ -53,14 +54,16 @@ var listaJSON = localStorage.getItem('lista');
         addItem();
         listaTabela();
     }
+
 // funcao de salvar no localStorage
 function saveStorage() {
     var listaJSON = JSON.stringify(lista);
     // salva a lista
     localStorage.setItem('lista', listaJSON);
+    
 }
 
-    //monta os itens na tabela
+//monta os itens na tabela
 function listaTabela(){
 
     let tabela = document.getElementById('tabela-li');
@@ -85,28 +88,29 @@ function listaTabela(){
         //cria o checkbox dentro da table
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox";
-        // checkbox.name = "name";
-        // checkbox.value = "value";
-        // checkbox.id = "id";
-        console.log(checkbox.id)
-        tabela_check.appendChild(checkbox)
-
-        //cria o elemento deletar clicando em uma imagem definida
+        checkbox.value = 'value';
+        checkbox.id = 'check';
+        tabela_check.appendChild(checkbox);
+        
+        //cria o elemento imagem na table
         let imgDelete = document.createElement('img');
         imgDelete.src="/img/imagem-delete2.png";
         tabela_acao.classList.add('center');
         tabela_acao.appendChild(imgDelete);
 
-        //addo evento de excluir o produto pelo id
-        imgDelete.onclick = function (id){
-            var novaLista = [];
-            lista.forEach(function (lista){
-            if (lista.id !== id){
-                novaLista.push('lista');
-                }
-            })
-        lista = novaLista;
-        }; 
+        //addo evento de excluir o produto pelo id na imagem
+        //imgDelete.setAttribute('onclick', removeProduto(lista[i].id))
+
+        // imgDelete.onclick = function (id){
+        //     var novaLista = [];
+        //     lista.forEach(function (lista){
+        //     if (lista.id !== id){
+        //         novaLista.push('lista');
+        //         }
+        //     })
+        // lista = novaLista;
+        // };
+        
     }
 }
 
@@ -118,7 +122,8 @@ function deletaLista(){
 
 // adiciona evento de click no botao de adicionar
 btnAddProd.addEventListener('click', addItem);
-  
+
+// adiciona evento de limpar o localStorage no botao de excluir
 btnDeletarLista.addEventListener('click', deletaLista)
 
 console.log(lista)
@@ -133,5 +138,19 @@ function removeProduto (id) {
         }
     })
     lista = novaLista;
-    listaTabela();
+    //listaTabela();
 }; 
+
+
+function deletar(id){        
+    
+    let tabela = document.getElementById('tabela');
+
+    for(let i = 0; i < lista.length; i++){
+
+        if(lista[i].id == id){
+           lista.splice(i, 1);
+            tabela.deleteRow(i);
+        }
+    }
+}
