@@ -1,6 +1,9 @@
 body{
     top: 0;
-    left: 0;;
+    left: 0;
+    margin: 0;
+    display: grid;
+    background-color: rgb(215, 184, 243);
 }
 
 #janela_input{
@@ -20,14 +23,16 @@ body{
     
 }
 .janela{
-    background: white;
+    background: rgb(167, 167, 168);
     width: 30%;
     min-width: 300px;
     padding: 40px;
-    border: 10px solid rgb(77, 72, 72);   
+    border: 10px solid rgb(97, 96, 96);   
 }  
 
-
+a{
+    color: aliceblue;
+}
 .imgDelet{
     width: 21px;
 }
@@ -39,7 +44,7 @@ body{
     height: 40px;
     padding: 5 0 5px 5px;
     display: flex;
-    background-color: aqua;
+    background-color: #6e43bd;
     min-width: 460px;
 }
 #navbar{
@@ -48,17 +53,48 @@ body{
     gap: 20px;
 }
 
-#container{
-    width: 450px;
-    height: 360px;
-    background: rgb(231, 229, 229);
-    position: fixed;
+.container{
+    width: auto;
+    height: auto;
+    background-color: rgb(191, 156, 231);
     border: 3px solid black;
-    
-    
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
-
 #conteudo-ini{
-    border: 3px solid black;
+    width: 600px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header{   
+    text-align: center;
+}
+
+.lista-tabela{
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 400px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(237, 215, 250); 
+}
+
+imputs{
+    flex-direction: column;
+    align-content: space-around;
+    
+    
 }

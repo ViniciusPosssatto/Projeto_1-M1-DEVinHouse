@@ -110,19 +110,24 @@ function listaTabela(){
         
         //tabela_acao.setAttribute('click', "deletar("+lista[i].id+")");
         //add evento de excluir o produto pelo id clicando na imagem
-        imgDelete.setAttribute('click', deletar(lista[i].id));
+        // imgDelete.setAttribute('click', () => 
+        //     deletar(lista[i].id));
+
+        imgDelete.setAttribute('onclick', `deletar(${lista[i].id})`);
 
         // função deletar item pelo ID
         function deletar(i, id){
             let tabela = document.getElementById('tabela-li')
             for(i = 0; i < lista.length; i++){
                 if(lista[i].id == id){
+                    
                     lista.splice(i, 1);
-                    //tabela.deleteRow(i);
+                    tabela.deleteRow(i);
                     //lista.deleteItem(i)
                 }
             }
         };
+        console.log(lista[i].id)
        
         // function removeItem(id){
         //     var novaLista = [];

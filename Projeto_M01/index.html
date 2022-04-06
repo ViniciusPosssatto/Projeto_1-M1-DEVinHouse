@@ -25,21 +25,21 @@
 </div>
 
 <div id="conteudo-ini">
-    
-    <h1>Cabeçalho 1</h1>
-    <p>Sobre a lista de produtos</p>
+    <header>
+        <h1>Monte sua lista dinâmica</h1>
+        <p>Adicione, elimine e calcule o valor total dos itens que dejesa. Aqui você adiciona os produtos que deseja comprar, coloca as quantidades e depois pode interagir com as funções da lista.</p>
+    </header>
 </div>  
-<div id="container">
-    <div id="input-produto">
-        <label for="nome-produto">Lista de produtos</label>
-        <br>
+<div id="container" class="container">
+    <div id="input-produto" class="inputs">
+        <label for="nome-produto">Produtos</label>
         <input id="nome-produto" name="nome-produto" type="text" placeholder="Nome do produto">
         <input id="qtd-produto" type="number" placeholder="Quantidade">
         <button id="btn-adiciona">Adicionar</button>
     </div>
 
     <div id="cont-lista">
-        <table border="3">
+        <table border="3" class="lista-tabela">
             <thead>
                 
                 <th id="check">check</th>
