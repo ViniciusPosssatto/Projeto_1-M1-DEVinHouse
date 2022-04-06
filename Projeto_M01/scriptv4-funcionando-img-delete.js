@@ -25,7 +25,7 @@ function addItem() {
         id: Date.now(),  
         name: nomeProduto.value,
         quantidade: qtdProduto.value,
-        //valor: valorProdutos.value,
+        valor: 0,
         status: false,
       });
       // reseta o valor do nome/qtdade/valor
@@ -33,9 +33,8 @@ function addItem() {
       qtdProduto.value = '';
       //valorProdutos = '';
       // salva no storage
-      saveStorage();
-      // chama função tabela
-      listaTabela();
+      
+      
     // } else {
     //     if(nomeProduto == ''){
     //         alert('Insira o nome de um item!');
@@ -67,6 +66,7 @@ function saveStorage() {
     var listaJSON = JSON.stringify(lista);
     // salva a lista
     localStorage.setItem('lista', listaJSON);
+    console.log(lista)
 }
 
 
@@ -97,82 +97,63 @@ function listaTabela(){
         //cria o checkbox dentro da table
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox";
+        checkbox.status = '';
+        checkbox.id = 'check';
         tabela_check.appendChild(checkbox);
         //checkbox.checked = item.status;
 
-
+        //função que captura true/false do check
+        // function atualiza(){
+        //         checkbox.onclick = event => {
+        //             if(status == false){
+        //                 valor = window.prompt("Digite o valor (R$)")
+                   
+        //                 if(!isNaN(valor) && valor > 0){
+        //                     var produto = {
+        //                         "id": id,
+        //                         "nome": nome,
+        //                         "quantidade": quantidade,
+        //                         "valor": Number(valor),
+        //                         "status": "checked",
+        //                 }
+        //                     // Muda-se valores do item.
+        //                     lista.splice(i, 1, 0, produto)
+        //                     saveStorage()
+        //                     listaTabela()
+        //                 }else{
+        //                     alert("osadasas")
+        //                 }
+        //             }
+        //         }
+        //     }
         
+
+        //atualiza();
+
         //cria o elemento imagem na table
         let imgDelete = document.createElement('img');
         imgDelete.src="/img/imagem-delete2.png";
         tabela_acao.appendChild(imgDelete);
         imgDelete.classList.add('imgDelet')
         
-        //tabela_acao.setAttribute('click', "deletar("+lista[i].id+")");
-        //add evento de excluir o produto pelo id clicando na imagem
-        // imgDelete.setAttribute('click', () => 
-        //     deletar(lista[i].id));
+        //função para deletar os itens da tabela
+        imgDelete.addEventListener("click", () =>{
+            deletarProduto(i);
+            saveStorage();
+            listaTabela();
+        });
+    
 
-        imgDelete.setAttribute('onclick', `deletar(${lista[i].id})`);
-
-        // função deletar item pelo ID
-        function deletar(i, id){
-            let tabela = document.getElementById('tabela-li')
-            for(i = 0; i < lista.length; i++){
-                if(lista[i].id == id){
-                    
-                    lista.splice(i, 1);
-                    tabela.deleteRow(i);
-                    //lista.deleteItem(i)
-                }
-            }
-        };
-        console.log(lista[i].id)
+        
        
-        // function removeItem(id){
-        //     var novaLista = [];
-        //     lista.forEach(function (item,id) {
-        //     if (item.id !== id){
-        //         novaLista.push(item);
-        //         }
-        //     })
-        //     lista = novaLista;
-        //     listaTabela();
-        // };
-        // console.log(imgDelete)
-
-
-        // imgDelete.addEventListener('onclick', function deletar(id){        
-        //     var novaLista = [];
-        //     for(let i = 0; i < lista.length; i++){
-        
-        //     if(lista[i].id !== id){
-        //         novaLista.push(item);
-        //         }
-        //     }
-        //     lista = novaLista;
-        //     console.log(lista)
-        // });
-
-        // imgDelete.addEventListener('onclick', function deletar(id){
-        //     let tabela = document.getElementById('tabela-li')
-        //     for(let i = 0; i < lista.length; i++){
-        //         if(lista[i].id == id){
-        //             lista.splice(i, 1);
-        //             tabela.deleterow(i);
-        //         }
-        //     }
-        // });
-
-        
-        
     }
+    
 }
-
-
-
-
-
+//função para deletar item pela imagem delete
+function deletarProduto(i) {
+    let tabela = document.getElementById('tabela-li');
+    lista.splice(i, 1)
+    tabela.deleteRow(i);
 
 
 // objetivo de limpar a lista do local storage
@@ -181,30 +162,40 @@ function deletaLista(){
     if(confirm('Deseja realmente deletar a lista de produtos?')){
         localStorage.clear();
         tabela.innerHtml = '';  //testar isso
+        listaTabela()
+        addItem()
     }
     
-    listaTabela()
-    addItem()
 }
- 
-
 
 
 // verifica se o produto está marcado/ se estiver marcado tem que executar a prox function
-function checked(item){
+function checked(){
     lista.forEach(item => {
-        if(item.status == checked){
-            return item.status = true;
+        if(item.status == false) {
+            valor = window.prompt("Digite o valor (R$)")
+                   
+                        if(!isNaN(valor) && valor > 0){
+                            var produto = {
+                                "id": id,
+                                "nome": nome,
+                                "quantidade": quantidade,
+                                "valor": Number(valor),
+                                "status": "checked",
+                        }
+                            // Muda-se valores do item.
+                            lista.splice(i, 1, 0, produto)
+                            saveStorage()
+                            listaTabela()
+                        }else{
+                            alert("osadasas")
+                        }
+                    }
+            //total += item.valor * item.quantidade;
         }
-            if(item.status == true){
-                console.log(total += item.valorProdutos * item.qtdProduto)
-                janelaValor(janela_input)
-        }
-    })
+        
+    )}
 }
-
-
-//add função pra janelaValor aparecer na tela e atribui evento para o botao inserir
 
 
 /////// alterar aqui para quando o item estiver checked ele executar esse codigo
@@ -222,28 +213,18 @@ function janelaValor(janela_input){
 }
 
 
-// //addo evento de excluir o produto pelo id
-// function removeProduto(id) {
-//     var novaLista = [];
-//     lista.forEach(function (item){
-//         if (item.id !== id){
-//         novaLista.push(item);
-//         }
-//     })
-//     lista = novaLista;
-//     //console.log(lista);
-// }; 
-
-
-
-
-
-
 // aciona evento para aparecer a janela de valor
-btnAddProd.addEventListener('click', addItem);
+btnAddProd.addEventListener('click', () => {
+    addItem();
+    saveStorage();
+    listaTabela();
+});
 
 
 // adiciona evento de limpar o localStorage no botao de excluir
-btnDeletarLista.addEventListener('click', deletaLista)
+btnDeletarLista.addEventListener('click', () => {
+    deletaLista();
+});
 
-console.log(lista)
+
+        
