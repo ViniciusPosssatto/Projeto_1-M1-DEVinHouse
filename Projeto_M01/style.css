@@ -26,15 +26,15 @@ img{
 }
 
 #container{
-    width: 600px;
-    height: 400px;
+    width: 450px;
+    height: 360px;
     background: rgb(231, 229, 229);
     position: fixed;
     border: 3px solid black;
     display: inline;
     
 }
-}
+
 
 #conteudo-ini{
     border: 3px solid black;
