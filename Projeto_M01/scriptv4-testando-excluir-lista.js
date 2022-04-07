@@ -11,7 +11,6 @@ const btnAddProd = document.getElementById('btn-adiciona');
 const btnAdcValor = document.getElementById('btn-valor');
 const btnDeletarLista = document.getElementById('deletar-lista');
 const btnDeletarItens = document.getElementById('deletar-itens');
-const btnComprar = document.getElementById('btn-comprar');
 
 // Array dos produtos
 var lista = [];
@@ -31,9 +30,7 @@ function addItem() {
       // reseta o valor do nome/qtdade/valor
       nomeProduto.value = '';
       qtdProduto.value = '';
-      //valorProdutos = '';
-      // salva no storage
-      
+      //valorProdutos = ''; 
       
     // } else {
     //     if(nomeProduto == ''){
@@ -157,31 +154,20 @@ function deletarProduto(i) {
 
 
 // objetivo de limpar a lista do local storage
-function deletaLista(){
-    let tabela = document.getElementById('tabela-li');
-    if(confirm('Deseja realmente deletar a lista de produtos?')){
-        localStorage.clear();
-        tabela.innerHtml = '';  //testar isso
-        listaTabela()
-        addItem()
-    }
-    
-}
+
 
 
 // verifica se o produto está marcado/ se estiver marcado tem que executar a prox function
 function checked(){
     lista.forEach(item => {
         if(item.status == false) {
-            valor = window.prompt("Digite o valor (R$)")
+            valor = janelaValor(janela_input);
                    
                         if(!isNaN(valor) && valor > 0){
-                            var produto = {
-                                "id": id,
-                                "nome": nome,
-                                "quantidade": quantidade,
-                                "valor": Number(valor),
-                                "status": "checked",
+                            lista.push({
+                                'valor': valor,
+                                'status': checked,
+                            });
                         }
                             // Muda-se valores do item.
                             lista.splice(i, 1, 0, produto)
@@ -191,12 +177,10 @@ function checked(){
                             alert("osadasas")
                         }
                     }
-            //total += item.valor * item.quantidade;
-        }
-        
-    )}
-}
-
+                )};
+            }
+  
+//total += item.valor * item.quantidade;
 
 /////// alterar aqui para quando o item estiver checked ele executar esse codigo
 function janelaValor(janela_input){
@@ -223,7 +207,11 @@ btnAddProd.addEventListener('click', () => {
 
 // adiciona evento de limpar o localStorage no botao de excluir
 btnDeletarLista.addEventListener('click', () => {
-    deletaLista();
+    if(confirm('Deseja realmente deletar a lista de produtos?')){
+        localStorage.clear();
+        location.reload();  // gambiarra funcional
+        
+    }
 });
 
 
