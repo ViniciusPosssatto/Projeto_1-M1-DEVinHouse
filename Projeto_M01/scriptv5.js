@@ -137,6 +137,7 @@ function listaTabela(){
         checkbox.type = "checkbox";
         checkbox.status = 'false';
         checkbox.id = 'check1';
+        checkbox.title = 'Marque o item comprado'
         cell.style.textDecoration = lista[i].status ? 'line-through' : "";   //risca a linha marcada em check
         checkbox.checked = lista[i].status ? "checked" : "";  
 
@@ -153,6 +154,7 @@ function listaTabela(){
         imgDelete.src="/img/imagem-delete2.png";
         tabela_acao.appendChild(imgDelete);
         imgDelete.classList.add('imgDelet')
+        imgDelete.title = 'Deletar item';
         
         //função para deletar os itens da tabela clicando na imagem
         imgDelete.addEventListener("click", () =>{
@@ -211,6 +213,7 @@ btnDeletarLista.addEventListener('click', () => {
     if(confirm('Deseja realmente deletar a lista de produtos?')){
         localStorage.clear();
         location.reload();  // gambiarra funcional
+        
         
     }
 });
