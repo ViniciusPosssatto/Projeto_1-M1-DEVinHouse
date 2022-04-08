@@ -32,14 +32,11 @@ function addItem() {
         valor: 0,
         status: false,
       });
-     } //else {
-    //     alert('Digite o nome e o valor do produto!')
-    // }
     // reseta o valor do nome/qtdade
       nomeProduto.value = '';
       qtdProduto.value = ''; 
+    }
 }
-
 
 // busca lista no localStorage
 var listaJSON = localStorage.getItem('lista');
@@ -77,7 +74,7 @@ function checked(id, name, quantidade, status, i){
                 "id": id,
                 "name": name,
                 "quantidade": quantidade,
-                "valor": Number(valor),
+                "valor": Number(valor),    // valor capturado no prompt
                 "status": true,
                 }
 
@@ -140,8 +137,10 @@ function listaTabela(){
         checkbox.type = "checkbox";
         checkbox.status = 'false';
         checkbox.id = 'check1';
-        cell.style.textDecoration = lista[i].status ? 'line-through' : "";   //risca a linha marcada 
-        checkbox.checked = lista[i].status ? "checked" : "";
+        cell.style.textDecoration = lista[i].status ? 'line-through' : "";   //risca a linha marcada em check
+        checkbox.checked = lista[i].status ? "checked" : "";  
+
+        // chama a função de capturar o valor com o click no checkbox
         checkbox.onclick = () => {
             checked(lista[i].id, lista[i].name, lista[i].quantidade, lista[i].status, i)
             saveStorage();
@@ -155,7 +154,7 @@ function listaTabela(){
         tabela_acao.appendChild(imgDelete);
         imgDelete.classList.add('imgDelet')
         
-        //função para deletar os itens da tabela
+        //função para deletar os itens da tabela clicando na imagem
         imgDelete.addEventListener("click", () =>{
             deletarProduto(i);
             saveStorage();
@@ -163,12 +162,12 @@ function listaTabela(){
         });
     
     // capturando os valores, multiplicando e somando para apresentar
-    
     const getTotal = i => i.quantidade * i.valor
     const somar = (acc, el) => acc + el
 
     const total = lista.map(getTotal).reduce(somar);
     //console.log(total)
+    
     valorTotal.innerText = `O valor total dos produtos é: R$ ${total}`
 
     }
@@ -176,28 +175,30 @@ function listaTabela(){
 }
 
 
-//função para deletar item pela imagem delete
+//função para deletar item específico a partir do índice
 function deletarProduto(i) {
     let tabela = document.getElementById('tabela-li');
     lista.splice(i, 1)
     tabela.deleteRow(i);
 }
 
-/////// alterar aqui para quando o item estiver checked ele executar esse codigo
-function janelaValor(janela_input){
-    const janelaValor = document.getElementById(janela_input);
-    janelaValor.classList.add('janela_input');
-    btnAdcValor.addEventListener('click', function () {
-        if(valorProdutos.value){
-            janelaValor.classList.remove('janela_input');
-            
-        }
-        addItem();
-        listaTabela();
-    });
-}
 
-// aciona evento para adicionar produto na table
+/////  -- modal fora de funcionamento - no futuro substituirá o prompt para captura do valor do item
+// // quando o item estiver checked ele executa o modal
+// function janelaValor(janela_input){
+//     const janelaValor = document.getElementById(janela_input);
+//     janelaValor.classList.add('janela_input');
+//     btnAdcValor.addEventListener('click', function () {
+//         if(valorProdutos.value){
+//             janelaValor.classList.remove('janela_input');
+            
+//         }
+//         addItem();
+//         listaTabela();
+//     });
+// }
+
+// aciona botão/evento para adicionar produto na table
 btnAddProd.addEventListener('click', () => {
     addItem();
     saveStorage();
@@ -205,7 +206,7 @@ btnAddProd.addEventListener('click', () => {
 });
 
 
-// adiciona evento de limpar o localStorage no botao de excluir
+// adiciona botão/evento de limpar o localStorage no botao de excluir
 btnDeletarLista.addEventListener('click', () => {
     if(confirm('Deseja realmente deletar a lista de produtos?')){
         localStorage.clear();
@@ -215,13 +216,10 @@ btnDeletarLista.addEventListener('click', () => {
 });
 
 
+//// -- formatação fora de funcionamento atual --
+// // Formata string para valor monetário  -- by Marcelo e Maycon
+// function formataValor(valorTotal){
+//     var valorFormatado = valorTotal;
 
-
-
-
-// Formata string para valor monetário  -- by Marcelo e Maycon
-function formataValor(valorTotal){
-    var valorFormatado = valorTotal;
-
-    return valorFormatado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL', minimumFractionDigits: 2});
-};
+//     return valorFormatado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL', minimumFractionDigits: 2});
+// };

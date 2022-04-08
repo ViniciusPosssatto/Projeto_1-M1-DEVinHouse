@@ -3,9 +3,11 @@ body{
     left: 0;
     margin: 0;
     display: grid;
+    background-position: 50%;
     background-color: rgb(215, 184, 243);
+    background-image: url(img/imagem-fundo.jpg);
 }
-
+/*  -- modal fora de funcionamento atual --
 #janela_input{
     width: 100vw;
     height: 100vh;
@@ -29,23 +31,24 @@ body{
     padding: 40px;
     border: 10px solid rgb(97, 96, 96);   
 }  
+*/
 
-a{
-    color: aliceblue;
-}
 .imgDelet{
     width: 21px;
+    cursor: pointer;
 }
 .img-logo{
     width: 90px;
 }
+
 .navbar{
     width: 100%;
     height: 40px;
     padding: 5 0 5px 5px;
     display: flex;
-    background-color: #6e43bd;
+    background-color: rgba(255, 100, 100, 0.3);
     min-width: 460px;
+    
 }
 #navbar{
     display: flex;
@@ -54,6 +57,9 @@ a{
 }
 
 .container{
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
     width: auto;
     height: auto;
     background-color: rgb(191, 156, 231);
@@ -67,9 +73,14 @@ a{
     justify-content: space-around;
     align-items: center;
     backdrop-filter: blur(12px);
+    background-image: url(img/imagem-fundo.jpg);
 }
 
 #conteudo-ini{
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    margin-top: 40px;
     width: 600px;
     height: 150px;
     display: flex;
@@ -77,6 +88,7 @@ a{
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    backdrop-filter: blur(12px); 
 }
 
 header{   
@@ -84,7 +96,17 @@ header{
     
 }
 
+nav a{
+    margin-right: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(2, 3, 3);
+    transition: background-color blue 300ms, color 1s;
+}
+
 .lista-tabela{
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(0, 0, 0);
     margin-left: auto;
     margin-right: auto;
     min-width: 400px;
@@ -98,5 +120,43 @@ header{
 /* -- by Eric */
 input[type=checkbox] {
     transform: scale(1.5);
-    filter: invert(100%) hue-rotate(18deg) brightness(1.7); 
+    filter: invert(100%) hue-rotate(88deg) brightness(1.7);
+    cursor: pointer;
+}
+
+input[type=text] {
+    font-size: 18px;
+    width: 200px;
+    padding: 5px;
+    margin: 0 5px 3px 5px;
+}
+input[type=number] {
+    font-size: 18px;
+    width: 200px;
+    padding: 5px;
+    margin: 0 5px 3px 5px;
+}
+button{
+    font-size: 18px;
+    padding: 5px 15px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+th{
+    padding: 2px 10px;
+}
+
+footer {
+    margin-top: 30px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(255, 100, 100, 0.3);
+    color: rgb(255, 254, 254);
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-evenly;
 }
