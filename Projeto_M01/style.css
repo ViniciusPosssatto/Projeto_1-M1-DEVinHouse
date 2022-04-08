@@ -3,11 +3,11 @@ body{
     left: 0;
     margin: 0;
     display: grid;
-    background-position: 50%;
+    position: relative;
     background-color: rgb(215, 184, 243);
     background-image: url(img/imagem-fundo.jpg);
 }
-/*  -- modal fora de funcionamento atual --*/
+/*  ------- modal fora de funcionamento atual ------ */
 #janela_input{
     width: 100vw;
     height: 100vh;
@@ -31,7 +31,7 @@ body{
     padding: 40px;
     border: 10px solid rgb(97, 96, 96);   
 }  
-
+/* ------------------------ */
 
 .imgDelet{
     width: 21px;
