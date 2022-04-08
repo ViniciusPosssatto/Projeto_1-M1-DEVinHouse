@@ -44,7 +44,7 @@ Foi construída com base nos elementos do HTML5, CSS3 e JavaScript(JS). Utilizan
     
 - Outros elementos = colocado uma navbar com alguns itens e um footer para dar uma aparência mais característica de uma página. Implementado um logo do DevinHouse ao lado da barra. 
     
-- Css = alguns detalhes principais são: foi centralizado o header e a tabela para ficarem mais destacadas no centro da página. Utilizado fonte, tamanho e cores que facilitam a visualização e leitura. Colocado uma imagem de backgroud para não ficar uma cor monótona, porém ela possui um tamanho menor em relação a tela, então ela não preenche todo o espaço do body.
+- Css = alguns detalhes principais são: foi centralizado o header e a tabela para ficarem mais destacadas no centro da página. Utilizado fonte, tamanho e cores que facilitam a visualização e leitura. Colocado uma imagem de backgroud para não ficar uma cor monótona e ficar mais bonita/chamativa.
     
 - Css Tabela = a tabela se ajusta de acondo com o tamanho do nome ou valor do item e ela literalmente quebra os cantos da página tendo que rolar para o lado para ver o restante dos itens da tabela. Quando adicionado muitos itens também ocorre um problema de a imagem de fundo chegar ao fim e iniciar outra ficando aquela divisão nítida de cores entre elas.</p>
 
