@@ -16,20 +16,23 @@ const btnComprar = document.getElementById('btn-comprar');
 // Array dos produtos
 var lista = [];
 
+
+
 // funcao de adicionar item
 function addItem() {
     // testa se existe algo escrito no campo  
-    if (nomeProduto.value_) {
+    if (nomeProduto.value) {
         lista.push({            //insere um objeto com id/nome/qtde/valor no array
         id: Date.now(),  
         name: nomeProduto.value,
         quantidade: qtdProduto.value,
         valor: valorProdutos.value,
+        status: false,
       });
       // reseta o valor do nome/qtdade/valor
       nomeProduto.value = '';
       qtdProduto.value = '';
-      valorProdutos = '';
+      //valorProdutos = '';
       // salva no storage
       saveStorage();
       // chama função tabela
@@ -44,6 +47,9 @@ function addItem() {
     }
 }
 
+
+
+
 // busca lista no localStorage
 var listaJSON = localStorage.getItem('lista');
 
@@ -55,13 +61,17 @@ var listaJSON = localStorage.getItem('lista');
         listaTabela();
     }
 
+
+
 // funcao de salvar no localStorage
 function saveStorage() {
     var listaJSON = JSON.stringify(lista);
     // salva a lista
     localStorage.setItem('lista', listaJSON);
-    
 }
+
+
+
 
 //monta os itens na tabela
 function listaTabela(){
@@ -88,9 +98,10 @@ function listaTabela(){
         //cria o checkbox dentro da table
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox";
-        checkbox.value = 'value';
-        checkbox.id = 'check';
         tabela_check.appendChild(checkbox);
+        //checkbox.checked = item.status;
+
+
         
         //cria o elemento imagem na table
         let imgDelete = document.createElement('img');
@@ -98,9 +109,8 @@ function listaTabela(){
         tabela_acao.classList.add('center');
         tabela_acao.appendChild(imgDelete);
 
-        //addo evento de excluir o produto pelo id na imagem
-        //imgDelete.setAttribute('onclick', removeProduto(lista[i].id))
-
+        //add evento de excluir o produto pelo id na imagem
+        
         // imgDelete.onclick = function (id){
         //     var novaLista = [];
         //     lista.forEach(function (lista){
@@ -110,23 +120,34 @@ function listaTabela(){
         //     })
         // lista = novaLista;
         // };
-        
+        //imgDelete.addEventListener('onclick', removeProduto(lista.id))
+
     }
 }
 
+
+
+
 // objetivo de limpar a lista do local storage
 function deletaLista(){
-    localStorage.clear();
+    if(confirm('Deseja realmente deletar a lista de produtos?')){
+        return localStorage.clear();
+    }
+}
+ 
+
+
+
+// verifica se o produto está marcado
+function checked(){
+    lista.forEach(lista => {
+        if(lista.status == checked){
+            console.log(total += lista.valorProdutos * lista.qtdProduto)
+        }
+    })
 }
 
 
-// adiciona evento de click no botao de adicionar
-btnAddProd.addEventListener('click', addItem);
-
-// adiciona evento de limpar o localStorage no botao de excluir
-btnDeletarLista.addEventListener('click', deletaLista)
-
-console.log(lista)
 
 
 //addo evento de excluir o produto pelo id
@@ -134,23 +155,50 @@ function removeProduto (id) {
     var novaLista = [];
     lista.forEach(function (lista){
         if (lista.id !== id){
-            novaLista.push(lista);
+        novaLista.push(lista);
         }
     })
     lista = novaLista;
-    //listaTabela();
+    //console.log(lista);
 }; 
+
+
 
 
 function deletar(id){        
     
-    let tabela = document.getElementById('tabela');
+let tabela = document.getElementById('tabela');
 
     for(let i = 0; i < lista.length; i++){
 
-        if(lista[i].id == id){
-           lista.splice(i, 1);
-            tabela.deleteRow(i);
+    if(lista[i].id == id){
+        lista.splice(i, 1);
+        tabela.deleteRow(i);
         }
     }
 }
+
+
+//add função pra janelaValor aparecer na tela e atribui evento para o botao inserir
+function janelaValor(janela_input){
+    const janelaValor = document.getElementById(janela_input);
+    janelaValor.classList.add('janela_input');
+    btnAdcValor.addEventListener('click', function () {
+        if(valorProdutos.value){
+            janelaValor.classList.remove('janela_input');
+        }
+        addItem();
+        listaTabela();
+    });
+}
+
+
+
+// aciona evento para aparecer a janela de valor
+btnAddProd.addEventListener('click', () => janelaValor('janela_input'));
+
+
+// adiciona evento de limpar o localStorage no botao de excluir
+btnDeletarLista.addEventListener('click', deletaLista)
+
+console.log(lista)

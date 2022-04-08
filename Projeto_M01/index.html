@@ -6,66 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
-    <script type="module" src="./script.js" ></script>
-    <title>Peças e Pc's</title>
+    
+    <title>Lista Dinâmica</title>
 </head>
 
 <body>
 
-<div id="img-lateral">
-    <img src="" alt="imagem de Pc-Rgb">
-</div>
-
-<div id="container">
-    <div id="barra-nav">
-        <nav id="navbar">
-            HOME
-        </nav>
+    <div class="navbar">
+        <img class="img-logo" src="/img/imagemlogo.png" alt="logo DevinHouse">
+        <div class="barra-nav">
+            <nav id="navbar">
+                <a href="/index.html">HOME</a>
+                <a href="">Area do Cliente</a>
+                <a href="">Sobre nós</a> 
+                <a href="">Carrinho</a> 
+            </nav>
+        </div>
     </div>
-    <h1>Cabeçalho 1</h1>
-    <p>Sobre a lista de produtos</p>
+
+    <div id="conteudo-ini">
+        <header>
+            <h1>Monte sua lista dinâmica</h1>
+            <p>Adicione, elimine e calcule o valor total dos itens que dejesa. Aqui você coloca os produtos que deseja comprar, dispõe as quantidades e depois pode interagir com as funções da lista.</p>
+            <p>E ao final consegue ver o total gasto com eles. Legal né!?</p>
+        </header>
+    </div>  
+    <div id="container" class="container">
+        <div id="input-produto" class="inputs">
+            <label for="nome-produto">Produtos</label>
+            <input id="nome-produto" name="nome-produto" type="text" placeholder="Nome do produto">
+            <input id="qtd-produto" type="number" placeholder="Quantidade">
+            <button id="btn-adiciona" title="Coloca seu produto na tabela">Adicionar</button>
+        </div>
+
+        <div id="cont-lista">
+            <table border="3" class="lista-tabela">
+                <thead>
+                    
+                    <th id="check">check</th>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Valor</th>
+                    <th class="center">Ação</th>
+                    
+                </thead>
+                <tbody id="tabela-li">
+                    
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <p id="total-produtos">Total dos produtos: R$ </p>
+        </div>
+        <div id="botoes">
+            <button id="deletar-itens" title="Retira os itens da lista">Deletar itens marcados</button>
+            <button id="deletar-lista" title="Retira todos os itens da lista">Excluir lista de produtos</button>
+        </div>
+    
+    </div>
+    <div id="janela-input">
+        <div class="janela">
+            <label for="valor-produtos">Valor unitário</label>
+            <input id="valor-produtos" type="number" placeholder="R$">
+            <button id="btn-valor">Inserir</button>
+        </div>
+    </div>
    
-
-    <div id="input-produto">
-        <label for="nome-produto">Lista de produtos</label>
-        <br>
-        <input id="nome-produto" name="nome-produto" type="text" placeholder="Nome do produto">
-        <input id="qtd-produto" type="number" placeholder="Quantidade">
-        <button id="btn-adiciona">Adicionar</button>
-    </div>
-
-    <div id="cont-lista">
-        <table border="3">
-            <thead>
-                <th class="center">Check</th>
-                <th>Produto</th>
-                <th>Quantidade</th>
-                <th>Valor</th>
-                <th class="center">Ação</th>
-            </thead>
-            <tbody id="tabela-li">
-
-            </tbody>
-        </table>
-    </div>
-    <div>
-        <p id="total-produtos">Total dos produtos: R$ </p>
-    </div>
-    <div id="botoes">
-        <button id="deletar-itens">Deletar itens marcados</button>
-        <button id="deletar-lista">Excluir lista de produtos</button>
-    </div>
-   
-</div>
-<div id="janela-input">
-    <div class="janela">
-        <label for="valor-produtos">Valor unitário</label>
-        <input id="valor-produtos" type="number" placeholder="R$">
-        <button id="btn-valor">Inserir</button>
-    </div>
-</div>
-
-<footer>
-    Vinicius Possatto Stormoski
-</footer>
+    <footer>
+        Página desenvolvida por Vinicius Possatto Stormoski - DEVinHouse - 2022
+    </footer>
+<script src="./scriptv5.js" defer></script>
+</body>
 </html>
