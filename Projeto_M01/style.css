@@ -4,8 +4,9 @@ body{
     margin: 0;
     display: grid;
     position: relative;
-    background-color: rgb(215, 184, 243);
-    background-image: url(img/imagem-fundo.jpg);
+    background-color: rgb(94, 93, 94);
+    background-image: url(img/img-fundo.jpg);
+    background-size: cover;
 }
 /*  ------- modal fora de funcionamento atual ------ */
 #janela_input{
@@ -31,7 +32,7 @@ body{
     padding: 40px;
     border: 10px solid rgb(97, 96, 96);   
 }  
-/* ------------------------ */
+/* ----------------------------------------------------- */
 
 .imgDelet{
     width: 21px;
@@ -43,10 +44,10 @@ body{
 
 .navbar{
     width: 100%;
-    height: 40px;
+    height: 50px;
     padding: 5 0 5px 5px;
     display: flex;
-    background-color: rgba(255, 100, 100, 0.3);
+    background-color: rgb(173, 172, 172, 0.4);
     min-width: 460px;
     
 }
@@ -63,7 +64,6 @@ body{
     width: auto;
     height: auto;
     background-color: rgb(191, 156, 231);
-    border: 1px solid rgb(81, 13, 129);
     margin-left: auto;
     margin-right: auto;
     padding: 30px;
@@ -73,7 +73,8 @@ body{
     justify-content: space-around;
     align-items: center;
     backdrop-filter: blur(12px);
-    background-image: url(img/imagem-fundo.jpg);
+    background-image: url(img/img-fundo.jpg);
+    
 }
 
 #conteudo-ini{
@@ -99,7 +100,7 @@ header{
 nav a{
     margin-right: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: rgb(2, 3, 3);
+    color: rgb(255, 255, 255);
     transition: background-color blue 300ms, color 1s;
 }
 
@@ -151,7 +152,7 @@ footer {
     margin-top: 30px;
     padding: 10px;
     text-align: center;
-    background-color: rgba(255, 100, 100, 0.3);
+    background-color: rgb(173, 172, 172, 0.4);
     color: rgb(255, 254, 254);
     position: relative;
     bottom: 0;
@@ -159,4 +160,9 @@ footer {
     right: 0;
     display: flex;
     justify-content: space-evenly;
+}
+
+.campo-valor{
+    padding: 0 25px;
+    backdrop-filter: blur(12px);
 }
