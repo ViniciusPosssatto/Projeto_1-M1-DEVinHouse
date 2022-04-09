@@ -151,7 +151,7 @@ function listaTabela(){
        
         //cria o elemento imagem na table
         let imgDelete = document.createElement('img');
-        imgDelete.src="/img/imagem-delete2.png";
+        imgDelete.src="/img/imagem-delete.png";
         tabela_acao.appendChild(imgDelete);
         imgDelete.classList.add('imgDelet')
         imgDelete.title = 'Deletar item';

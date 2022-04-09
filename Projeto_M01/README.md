@@ -46,8 +46,9 @@ Foi construída com base nos elementos do HTML5, CSS3 e JavaScript(JS). Utilizan
     
 - Css = alguns detalhes principais são: foi centralizado o header e a tabela para ficarem mais destacadas no centro da página. Utilizado fonte, tamanho e cores que facilitam a visualização e leitura. Colocado uma imagem de backgroud para não ficar uma cor monótona e ficar mais bonita/chamativa.
     
-- Css Tabela = a tabela se ajusta de acondo com o tamanho do nome ou valor do item e ela literalmente quebra os cantos da página tendo que rolar para o lado para ver o restante dos itens da tabela. Quando adicionado muitos itens também ocorre um problema de a imagem de fundo chegar ao fim e iniciar outra ficando aquela divisão nítida de cores entre elas.</p>
+- Css Tabela = a tabela se ajusta de acondo com o tamanho do nome ou valor do item e ela literalmente quebra os cantos da página tendo que rolar para o lado para ver o restante dos itens. Adicionado efeitos hover nos botões para dar um destaque na ação, tipo deletar em vermelho e adicionar em verde.</p>
 
+- Git = fiz uma branch secundária e fui realizando os commits comentados das mudanças e ao final realizado a merge na main. Ainda é necessário compreender melhor o uso das branchs ao invés de criar arquivos com diferentes versões.
 
 <h3>Conclusão</h3>
 
