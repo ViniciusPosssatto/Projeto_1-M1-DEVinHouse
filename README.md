@@ -1,5 +1,5 @@
 <h1 align="center">Olá, sou o Vinicius Possatto Stormoski</h1>
-<h2 align="center">Este é um repositório para os projetos realizados no curso DEVinHouse - SENAI</h2>
+<h2 align="center">Este é um repositório para o projeto 1 do módulo 1 do curso DEVinHouse - SENAI</h2>
 
 - SENAI_SC - DEVinHouse - [Turma Conecta Nuvem](https://devinhouse.tech)
 
